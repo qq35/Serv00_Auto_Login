@@ -3,7 +3,7 @@ name: SSH Connect
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 7 * * *'  # 每天午夜执行，可以根据需要修改 cron 表达1式
+    - cron: '0 23 * * *'  # 每天北京时间凌晨7点执行
 
 jobs:
   connect:
@@ -23,6 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install paramiko
           pip install requests
+
+      - name: Print current time
+        run: date
 
       - name: Run SSH connection script
         env:
